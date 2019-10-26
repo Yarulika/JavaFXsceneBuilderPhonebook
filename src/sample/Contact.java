@@ -1,9 +1,23 @@
 package sample;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(schema = "java_fx", name = "contacts")
 public class Contact {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column
     private String name;
+
+    @Column
     private String city;
+
+    @Column
     private int phone;
 
     public Contact(){
@@ -39,9 +53,18 @@ public class Contact {
         this.phone = phone;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
-        return String.format("Contact{name='%s', city='%s', phone=%d}", name,city,phone);
+//        return String.format("Contact{name='%s', city='%s', phone=%d}", name,city,phone);
+        return String.format("name: '%s', city: '%s', phone: %d", name,city,phone);
     }
 
 }

@@ -64,13 +64,28 @@ public class Controller {
     @FXML
     void onBtnAddContactClick(ActionEvent event) {
         System.out.println("Adding contact: " + name.getText() + city.getText() + phone.getText());
-        contacts.add(new Contact(name.getText(), city.getText(), Integer.parseInt(phone.getText()) ));
-        contactsList.getItems().add(String.format("Name: %s, city: %s, phone: %s", name.getText(), city.getText(), phone.getText()));
+
+        Contact contact = new Contact(name.getText(), city.getText(), Integer.parseInt(phone.getText()) );
+        ContactDAO contactDAO = new ContactDAO();
+        contactDAO.createContact(contact);
+
+        contacts.add(contact);
+
+//        contacts = contactDAO.getContacts();
+//        for (Contact con: contacts){
+//            contactsList.getItems().add(con.toString());
+//        }
+
     }
 
     @FXML
     void onBtnShowContactsClick(ActionEvent event) {
-        System.out.println("Contacts: ");
+        System.out.println("Show Contacts Click");
+        ContactDAO contactDAO = new ContactDAO();
+        contacts = contactDAO.getContacts();
+        for (Contact con: contacts){
+            contactsList.getItems().add(con.toString());
+        }
     }
 
 }
