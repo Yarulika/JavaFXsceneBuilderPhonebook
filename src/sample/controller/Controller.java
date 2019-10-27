@@ -70,12 +70,6 @@ public class Controller {
         contactDAO.createContact(contact);
 
         contacts.add(contact);
-
-//        contacts = contactDAO.getContacts();
-//        for (Contact con: contacts){
-//            contactsList.getItems().add(con.toString());
-//        }
-
     }
 
     @FXML
@@ -87,5 +81,4 @@ public class Controller {
             contactsList.getItems().add(con.toString());
         }
     }
-
 }
