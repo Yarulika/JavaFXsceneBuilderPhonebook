@@ -1,8 +1,8 @@
-package sample;
+package sample.databases;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
+import sample.model.Contact;
 import java.util.List;
 
 public class ContactDAO {

@@ -1,19 +1,15 @@
-package sample;
+package sample.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import sample.databases.ContactDAO;
+import sample.model.Contact;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Controller {
+public class ContactController {
     private List<Contact> contacts = new ArrayList<>();
 
     @FXML
@@ -52,20 +48,16 @@ public class Controller {
     @FXML
     private Button showContacts;
 
-
-    public Controller(){
-    }
-
     @FXML
-    private void initialize(){
-        System.out.println("Controller initialized!");
+    private void initialize() {
+        System.out.println("ContactController initialized!");
     }
 
     @FXML
     void onBtnAddContactClick(ActionEvent event) {
         System.out.println("Adding contact: " + name.getText() + city.getText() + phone.getText());
 
-        Contact contact = new Contact(name.getText(), city.getText(), Integer.parseInt(phone.getText()) );
+        Contact contact = new Contact(name.getText(), city.getText(), Integer.parseInt(phone.getText()));
         ContactDAO contactDAO = new ContactDAO();
         contactDAO.createContact(contact);
 
@@ -77,7 +69,7 @@ public class Controller {
         System.out.println("Show Contacts Click");
         ContactDAO contactDAO = new ContactDAO();
         contacts = contactDAO.getContacts();
-        for (Contact con: contacts){
+        for (Contact con : contacts) {
             contactsList.getItems().add(con.toString());
         }
     }

@@ -1,5 +1,4 @@
-package sample;
-
+package sample.model;
 
 import javax.persistence.*;
 
