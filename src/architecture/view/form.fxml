@@ -9,8 +9,9 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="498.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="498.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="architecture.controller.ContactController">
    <children>
       <MenuBar fx:id="menuBar" layoutX="-15.0" layoutY="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -31,9 +32,10 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="171.0" prefWidth="598.0">
                <children>
                   <Button fx:id="addContact" layoutX="14.0" layoutY="140.0" mnemonicParsing="false" onAction="#onBtnAddContactClick" prefHeight="27.0" prefWidth="465.0" text="Add contact" />
-                  <TextField fx:id="name" layoutX="14.0" layoutY="14.0" prefHeight="27.0" prefWidth="465.0" promptText="name" />
-                  <TextField fx:id="city" layoutX="15.0" layoutY="53.0" prefHeight="27.0" prefWidth="465.0" promptText="city" />
-                  <TextField fx:id="phone" layoutX="14.0" layoutY="94.0" prefHeight="27.0" prefWidth="465.0" promptText="phone" />
+                  <TextField fx:id="name" layoutX="14.0" layoutY="35.0" prefHeight="27.0" prefWidth="465.0" promptText="name" />
+                  <TextField fx:id="city" layoutX="15.0" layoutY="70.0" prefHeight="27.0" prefWidth="465.0" promptText="city" />
+                  <Text fx:id="error_msg" fill="#c32020" layoutX="72.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="317.2060546875" />
+                  <TextField fx:id="phone" layoutX="14.0" layoutY="107.0" prefHeight="27.0" prefWidth="465.0" promptText="phone" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
