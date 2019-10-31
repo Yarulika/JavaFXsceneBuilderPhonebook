@@ -1,11 +1,11 @@
-package sample.controller;
+package architecture.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import sample.Main;
+import architecture.Main;
 
 import java.io.IOException;
 
@@ -46,7 +46,4 @@ public class LoginController  {
         AnchorPane pane = FXMLLoader.load(Main.class.getResource("view/form.fxml"));
         rootpane.getChildren().setAll(pane);
     }
-
 }
-
-
