@@ -1,9 +1,9 @@
-package sample.databases;
+package architecture.databases;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
-import sample.model.Contact;
+import architecture.model.Contact;
 
 import java.util.List;
 import java.util.function.Function;
@@ -15,23 +15,24 @@ public class ContactDAO {
             session.save(contact);
             return contact;
         });
+
+
     }
 
     public static void deleteContact(Contact contact) {
-//        withDBSession(session -> {
-//            session.delete(contact);
-////            return co
-//        })
-
-
-//        Session session = HibConfig.getSessionFactory().getCurrentSession();
-//        session.beginTransaction();
-//
-//        Query query = session.createQuery("from Contact where name=:name");
-//        query.setParameter("name", name);
-//        Contact contact = (Contact) query.uniqueResult();
-//
-//        session.close();
+        Transaction transaction = null;
+        try {
+            Session session = HibConfig.getSessionFactory().getCurrentSession();
+            transaction = session.beginTransaction();
+            session.delete(contact);
+            transaction.commit();
+//            session.close();
+        } catch (Exception e){
+            if (transaction != null){
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
     }
 
     //query -> withDBSession
@@ -61,13 +62,13 @@ public class ContactDAO {
             Session session = HibConfig.getSessionFactory().getCurrentSession();
             session.beginTransaction();
 
-            Query query = session.createQuery("from Contact where name=:name");
+            Query query = session.createQuery("from Contact where name=:name", Contact.class);
             query.setParameter("name", name);
             Contact contact = (Contact) query.uniqueResult();
 
-            session.close();
+//            session.close();
             return contact;
-        } catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
             return null;
         }
@@ -93,7 +94,7 @@ public class ContactDAO {
         if (contact != null) {
             result = true;
         }
-        session.close();
+//        session.close();
         return result;
     }
 
@@ -103,9 +104,7 @@ public class ContactDAO {
         Query query = session.createQuery("from Contact");
         List<Contact> list = query.list();
 
-        session.close();
+//        session.close();
         return list;
     }
-
-
 }

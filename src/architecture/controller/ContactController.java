@@ -1,10 +1,10 @@
-package sample.controller;
+package architecture.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import sample.databases.ContactDAO;
-import sample.model.Contact;
+import architecture.databases.ContactDAO;
+import architecture.model.Contact;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,7 +75,6 @@ public class ContactController {
         }
     }
 
-
 //    private void handleLogin(ActionEvent event) {
 //        if(QueryDAO.isValidUser(usernameText.getText(), passwordText.getText())){
 //            try {
@@ -92,23 +91,19 @@ public class ContactController {
 //        }
 //    }
 
-
-
     @FXML
     void onBtnShowContactsClick(ActionEvent event) {
-//        System.out.println("Show Contacts onBtnShowContactsClick");
-//        ContactDAO contactDAO = new ContactDAO();
-//        contacts = contactDAO.getContacts();
-//        for (Contact con : contacts) {
-//            contactsList.getItems().add(con.toString());
-//        }
+        System.out.println("Show Contacts onBtnShowContactsClick");
+        ContactDAO contactDAO = new ContactDAO();
+        contacts = contactDAO.getContacts();
+        for (Contact con : contacts) {
+            contactsList.getItems().add(con.toString());
+        }
 
-
-//        Contact contact = ContactDAO.ifContactExist("Gio");
 //        Contact contact = ContactDAO.getContactByName("Gio");
-//        System.out.println("if exist " + contact.toString() );
-        System.out.println("if exist " + ContactDAO.ifContactExist("Gio") );
-
+////        System.out.println("if exist " + contact.toString() );
+//        System.out.println("if exist " + ContactDAO.ifContactExist("Gio") );
+//        ContactDAO.deleteContact(contact);
 
 
     }
