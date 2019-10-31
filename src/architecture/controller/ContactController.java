@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import architecture.databases.ContactDAO;
 import architecture.model.Contact;
+import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +47,7 @@ public class ContactController {
     private MenuItem menuItem;
 
     @FXML
-    private TextField error_msg;
+    private Text error_msg;
 
     @FXML
     private Button showContacts;
@@ -64,32 +65,22 @@ public class ContactController {
 
     @FXML
     void onBtnAddContactClick(ActionEvent event) {
-        if (!ContactDAO.ifContactExist(name.getText())){
-                System.out.println("Adding contact: " + name.getText() + city.getText() + phone.getText());
-                Contact contact = new Contact(name.getText(), city.getText(), Integer.parseInt(phone.getText()));
-                ContactDAO contactDAO = new ContactDAO();
-                contactDAO.createContact(contact);
-                contacts.add(contact);
-            } else {
+        System.out.println("Request for adding contact: " + name.getText() + city.getText() + phone.getText());
+        error_msg.setText("");
+
+        if (ContactDAO.ifContactExist(name.getText())) {
+            System.out.println("Contact exists already");
             error_msg.setText("Contact already exist");
+
+        } else {
+
+            System.out.println("Contact is new, adding it");
+            Contact contact = new Contact(name.getText(), city.getText(), Integer.parseInt(phone.getText()));
+            ContactDAO contactDAO = new ContactDAO();
+            contactDAO.createContact(contact);
+            contacts.add(contact);
         }
     }
-
-//    private void handleLogin(ActionEvent event) {
-//        if(QueryDAO.isValidUser(usernameText.getText(), passwordText.getText())){
-//            try {
-//                Parent root = FXMLLoader.load((getClass().getClassLoader().getResource("fxml/phonebook_registry.fxml")));
-//                Stage stage = (Stage) loginButton.getScene().getWindow();
-//                stage.setScene(new Scene(root));
-//
-//                QueryDAO.getAllRegistry();
-//            } catch (IOException io) {
-//                io.printStackTrace();
-//            }
-//        } else {
-//            errorText.setText("Invalid Username or Password!");
-//        }
-//    }
 
     @FXML
     void onBtnShowContactsClick(ActionEvent event) {
@@ -104,8 +95,5 @@ public class ContactController {
 ////        System.out.println("if exist " + contact.toString() );
 //        System.out.println("if exist " + ContactDAO.ifContactExist("Gio") );
 //        ContactDAO.deleteContact(contact);
-
-
     }
-
 }

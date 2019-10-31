@@ -15,24 +15,25 @@ public class ContactDAO {
             session.save(contact);
             return contact;
         });
-
-
     }
 
     public static void deleteContact(Contact contact) {
-        Transaction transaction = null;
-        try {
-            Session session = HibConfig.getSessionFactory().getCurrentSession();
-            transaction = session.beginTransaction();
+        withDBSession(session -> {
             session.delete(contact);
-            transaction.commit();
-//            session.close();
-        } catch (Exception e){
-            if (transaction != null){
-                transaction.rollback();
-            }
-            e.printStackTrace();
-        }
+            return true;
+        });
+//        Transaction transaction = null;
+//        try {
+//            Session session = HibConfig.getSessionFactory().getCurrentSession();
+//            transaction = session.beginTransaction();
+//            session.delete(contact);
+//            transaction.commit();
+//        } catch (Exception e){
+//            if (transaction != null){
+//                transaction.rollback();
+//            }
+//            e.printStackTrace();
+//        }
     }
 
     //query -> withDBSession
@@ -58,53 +59,42 @@ public class ContactDAO {
     }
 
     public static Contact getContactByName(String name) {
+        Contact contact = null;
         try {
-            Session session = HibConfig.getSessionFactory().getCurrentSession();
-            session.beginTransaction();
-
+            //without transaction for select: openSession
+            Session session = HibConfig.getSessionFactory().openSession();
             Query query = session.createQuery("from Contact where name=:name", Contact.class);
             query.setParameter("name", name);
-            Contact contact = (Contact) query.uniqueResult();
-
-//            session.close();
+            contact = (Contact) query.uniqueResult();
+            session.close();
             return contact;
         } catch (Exception ex) {
             ex.printStackTrace();
-            return null;
         }
-
-
-//        try {
-//            Session session = HibConfig.getSessionFactory().getCurrentSession();
-//                    session.beginTransaction();
-//
-//            Contact contact = session.find(Contact.class, name);
-//            return contact;
-//        } catch (Exception ex){
-//            ex.printStackTrace();
-//            return null;
-//        }
+        return contact;
     }
 
     public static boolean ifContactExist(String name) {
-        Session session = HibConfig.getSessionFactory().getCurrentSession();
+//        Session session = HibConfig.getSessionFactory().getCurrentSession();
         boolean result = false;
         Contact contact = getContactByName(name);
 
         if (contact != null) {
             result = true;
         }
-//        session.close();
         return result;
     }
 
     public static List<Contact> getContacts() {
-        Session session = HibConfig.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
-        Query query = session.createQuery("from Contact");
-        List<Contact> list = query.list();
-
-//        session.close();
-        return list;
+        List<Contact> contsList = null;
+        try {
+            Session session = HibConfig.getSessionFactory().openSession();
+            Query query = session.createQuery("from Contact");
+            contsList = query.list();
+            session.close();
+        } catch (Exception exc){
+            exc.printStackTrace();
+        }
+        return contsList;
     }
 }
