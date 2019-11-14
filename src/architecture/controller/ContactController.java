@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import architecture.databases.ContactDAO;
 import architecture.model.Contact;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 
 import java.util.ArrayList;
@@ -38,7 +39,16 @@ public class ContactController {
     private TextField phone;
 
     @FXML
-    private ListView<String> contactsList;
+    private TableView<Contact> contactsTableView;
+
+    @FXML
+    private TableColumn<Contact, String> contacts_name;
+
+    @FXML
+    private TableColumn<Contact, String> contacts_city;
+
+    @FXML
+    private TableColumn<Contact, Integer> contacts_phone;
 
     @FXML
     private ContextMenu contextManu;
@@ -56,6 +66,7 @@ public class ContactController {
     private void initialize() {
         System.out.println("ContactController initialized!");
 
+        //phone accepts only digits
         phone.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d{0,9}")) {
                 phone.setText(oldValue);
@@ -73,7 +84,6 @@ public class ContactController {
             error_msg.setText("Contact already exist");
 
         } else {
-
             System.out.println("Contact is new, adding it");
             Contact contact = new Contact(name.getText(), city.getText(), Integer.parseInt(phone.getText()));
             ContactDAO contactDAO = new ContactDAO();
@@ -87,13 +97,13 @@ public class ContactController {
         System.out.println("Show Contacts onBtnShowContactsClick");
         ContactDAO contactDAO = new ContactDAO();
         contacts = contactDAO.getContacts();
-        for (Contact con : contacts) {
-            contactsList.getItems().add(con.toString());
-        }
 
-//        Contact contact = ContactDAO.getContactByName("Gio");
-////        System.out.println("if exist " + contact.toString() );
-//        System.out.println("if exist " + ContactDAO.ifContactExist("Gio") );
-//        ContactDAO.deleteContact(contact);
+        contacts_name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        contacts_city.setCellValueFactory(new PropertyValueFactory<>("city"));
+        contacts_phone.setCellValueFactory(new PropertyValueFactory<>("phone"));
+
+        for (Contact contact: contacts){
+            contactsTableView.getItems().add(contact);
+        }
     }
 }
