@@ -8,12 +8,13 @@ import javax.persistence.PostPersist;
 public class ContactListener {
 
     @PostPersist
-    public void contactCreated(Contact contact){
+    public void contactCreated(Contact contact) {
+
         System.out.println("Contact created:" + contact.getName());
     }
 
     @PostLoad
-    public void printContact(Contact contact){
+    public void printContact(Contact contact) {
         System.out.println("Contact loaded:" + contact.getName());
     }
 }

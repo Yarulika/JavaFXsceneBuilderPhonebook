@@ -36,6 +36,6 @@ public class Contact {
 
     @Override
     public String toString() {
-        return String.format("name: '%s', city: '%s', phone: %d", name, city, phone);
+        return String.format("name: '%s', city: '%s', phone: '%d'", name, city, phone);
     }
 }

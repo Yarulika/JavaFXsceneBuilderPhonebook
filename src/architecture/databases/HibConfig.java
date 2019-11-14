@@ -1,11 +1,12 @@
 package architecture.databases;
 
+import architecture.model.Contact;
+import architecture.model.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
-import architecture.model.Contact;
 
 import java.util.Properties;
 
@@ -31,6 +32,7 @@ public class HibConfig {
                 configuration.setProperties(settings);
 
                 configuration.addAnnotatedClass(Contact.class);
+                configuration.addAnnotatedClass(User.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();
