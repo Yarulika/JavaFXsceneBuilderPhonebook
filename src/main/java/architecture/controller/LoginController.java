@@ -63,7 +63,7 @@ public class LoginController {
             return;
         }
         else {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/form.fxml"));
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/listcontacts.fxml"));
             rootpane.getChildren().setAll(pane);
         }
     }
@@ -71,7 +71,6 @@ public class LoginController {
     @FXML
     void onBtnRegisterNew(ActionEvent event) throws IOException {
         System.out.println("onBtnRegisterNew clicked");
-
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/register.fxml"));
         rootpane.getChildren().setAll(pane);
     }

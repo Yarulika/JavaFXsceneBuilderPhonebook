@@ -1,13 +1,23 @@
+
+Phonebook (desktop application: practice using JavaFx with SceneBuilder)
 # JavaFXsceneBuilderPhonebook
 
-JavaFx Phonebook desktop application (practice with SceneBuilder)
 Use cases:
-- User can login
-- User can create a new entry in the phone book
+- User registration
+- Login
+- Create contact
+- Contacts list
+- Update contact
+- Delete contact
 
-Used:
+Tools used:
+Java
 JavaFX
 Hibernate
-Java
+JUnit
+Lombok
+
+Institute: Software Development Academy
+Course: Java Helsinki 1, 2019
 
 @Anna Yarulina, 2019

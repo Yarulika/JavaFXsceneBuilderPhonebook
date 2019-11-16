@@ -1,5 +1,6 @@
 package architecture.controller;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -105,5 +106,11 @@ public class ContactController {
         for (Contact contact: contacts){
             contactsTableView.getItems().add(contact);
         }
+    }
+
+    @FXML
+    private void onClose() {
+        Platform.exit();
+        System.exit(0);
     }
 }

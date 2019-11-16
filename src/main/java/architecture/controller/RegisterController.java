@@ -4,9 +4,11 @@ import architecture.databases.UserDAO;
 import architecture.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +32,9 @@ public class RegisterController {
 
     @FXML
     private Button register_btn;
+
+    @FXML
+    private Button back_btn;
 
     @FXML
     private Label err_msg;
@@ -75,4 +80,12 @@ public class RegisterController {
             //UseCases.addContact()
         }
     }
+
+    @FXML
+    void onBtnBack(ActionEvent event) throws IOException {
+        System.out.println("onBtnBack clicked");
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/login.fxml"));
+        rootpane.getChildren().setAll(pane);
+    }
+
 }
