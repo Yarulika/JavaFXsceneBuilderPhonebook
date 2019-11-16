@@ -31,9 +31,6 @@ public class RegisterController {
     @FXML
     private Button register_btn;
 
-//    @FXML
-//    private TextField err_msg;
-
     @FXML
     private Label err_msg;
 
@@ -75,6 +72,7 @@ public class RegisterController {
                 err_msg.setText("User added");
                 users.add(user);
             }
+            //UseCases.addContact()
         }
     }
 }

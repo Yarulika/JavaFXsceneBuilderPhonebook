@@ -38,4 +38,6 @@ public class Contact {
     public String toString() {
         return String.format("name: '%s', city: '%s', phone: '%d'", name, city, phone);
     }
+
+
 }
