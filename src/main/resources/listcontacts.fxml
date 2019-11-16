@@ -26,23 +26,20 @@
           </Menu>
         </menus>
       </MenuBar>
-      <VBox layoutY="33.0" prefHeight="344.0" prefWidth="498.0">
+      <VBox layoutY="57.0" prefHeight="329.0" prefWidth="498.0">
          <children>
-            <TableView fx:id="contactsTableView" prefHeight="234.0" prefWidth="465.0">
+            <TableView fx:id="contactsTableView" prefHeight="307.0" prefWidth="498.0">
               <columns>
                 <TableColumn fx:id="contacts_name" prefWidth="154.0" text="name" />
                 <TableColumn fx:id="contacts_city" prefWidth="206.0" text="address" />
                   <TableColumn fx:id="contacts_phone" prefWidth="132.0" text="phone" />
               </columns>
                <VBox.margin>
-                  <Insets bottom="20.0" />
+                  <Insets bottom="10.0" />
                </VBox.margin>
             </TableView>
             <Button fx:id="btn_add_contact" mnemonicParsing="false" onAction="#onBtnAddContact" prefHeight="27.0" prefWidth="148.0" text="Add contact" />
          </children>
-         <padding>
-            <Insets top="40.0" />
-         </padding>
       </VBox>
    </children>
 </AnchorPane>

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="424.0" prefWidth="498.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="architecture.controller.ContactController">
+<AnchorPane fx:id="rootpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="424.0" prefWidth="498.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="architecture.controller.ContactController">
    <children>
       <MenuBar fx:id="menuBar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -26,7 +26,7 @@
           </Menu>
         </menus>
       </MenuBar>
-      <VBox alignment="CENTER" prefHeight="244.0" prefWidth="498.0" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0">
+      <VBox alignment="CENTER" layoutX="14.0" layoutY="38.0" prefHeight="283.0" prefWidth="471.0" AnchorPane.bottomAnchor="103.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="38.0">
          <children>
             <TextField fx:id="name" prefHeight="27.0" prefWidth="402.0" promptText="name">
                <opaqueInsets>
@@ -54,7 +54,11 @@
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Text>
-            <Button fx:id="addContact" mnemonicParsing="false" onAction="#onBtnAddContactClick" prefHeight="27.0" prefWidth="474.0" text="Add contact" />
+            <Button fx:id="addContact" mnemonicParsing="false" onAction="#onBtnAddContactClick" prefHeight="27.0" prefWidth="370.0" text="Add contact">
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin></Button>
+            <Button fx:id="back" alignment="CENTER" mnemonicParsing="false" onAction="#onBackBtn" text="Back" />
          </children>
          <padding>
             <Insets bottom="30.0" />

@@ -124,4 +124,10 @@ public class ContactController {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/about.fxml"));
         rootpane.getChildren().setAll(pane);
     }
+
+    public void onBackBtn(ActionEvent event) throws IOException {
+        System.out.println("onBtnBack clicked");
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/listcontacts.fxml"));
+        rootpane.getChildren().setAll(pane);
+    }
 }
