@@ -81,4 +81,9 @@ public class ContactsOperationsController {
         Platform.exit();
         System.exit(0);
     }
+
+    public void onAbout(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/about.fxml"));
+        rootpane.getChildren().setAll(pane);
+    }
 }

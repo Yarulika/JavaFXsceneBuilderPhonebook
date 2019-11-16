@@ -1,8 +1,8 @@
 package architecture.model;
 
 import architecture.databases.contracts.DBUserStorage;
-
-public class UserUseCases {
+//UseCases
+public class UserModel {
 
     static String registerUser(DBUserStorage storage, String username, String password){
         // return error msg ? or empty

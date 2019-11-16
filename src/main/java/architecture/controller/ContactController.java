@@ -3,17 +3,23 @@ package architecture.controller;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import architecture.databases.ContactDAO;
 import architecture.model.Contact;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ContactController {
     private List<Contact> contacts = new ArrayList<>();
+
+    @FXML
+    private AnchorPane rootpane;
 
     @FXML
     private MenuBar menuBar;
@@ -79,7 +85,7 @@ public class ContactController {
     void onBtnAddContactClick(ActionEvent event) {
         System.out.println("Request for adding contact: " + name.getText() + city.getText() + phone.getText());
         error_msg.setText("");
-
+        // TODO check not empty!
         if (ContactDAO.ifContactExist(name.getText())) {
             System.out.println("Contact exists already");
             error_msg.setText("Contact already exist");
@@ -112,5 +118,10 @@ public class ContactController {
     private void onClose() {
         Platform.exit();
         System.exit(0);
+    }
+
+    public void onAbout(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/about.fxml"));
+        rootpane.getChildren().setAll(pane);
     }
 }

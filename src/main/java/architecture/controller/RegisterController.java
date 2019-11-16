@@ -2,6 +2,7 @@ package architecture.controller;
 
 import architecture.databases.UserDAO;
 import architecture.model.User;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -88,4 +89,13 @@ public class RegisterController {
         rootpane.getChildren().setAll(pane);
     }
 
+    public void onClose(ActionEvent event) {
+        Platform.exit();
+        System.exit(0);
+    }
+
+    public void onAbout(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/about.fxml"));
+        rootpane.getChildren().setAll(pane);
+    }
 }

@@ -21,12 +21,12 @@
           </Menu>
           <Menu fx:id="help" mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem fx:id="about" mnemonicParsing="false" text="About" />
+              <MenuItem fx:id="about" mnemonicParsing="false" onAction="#onAbout" text="About" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
-      <VBox prefHeight="377.0" prefWidth="498.0">
+      <VBox layoutY="33.0" prefHeight="344.0" prefWidth="498.0">
          <children>
             <TableView fx:id="contactsTableView" prefHeight="234.0" prefWidth="465.0">
               <columns>
